@@ -6,8 +6,8 @@ import retrofit2.Retrofit
 
 class RetrofitConfig {
     companion object {
-        fun init() {
-            val retrofit: Retrofit = Retrofit.Builder()
+        fun init(): Retrofit {
+            return Retrofit.Builder()
                 .baseUrl("https://brapi.dev")
                 .client(client())
                 .build()
