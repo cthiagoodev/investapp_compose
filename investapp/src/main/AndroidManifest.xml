@@ -6,19 +6,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".modules.auth.presentation.views.AuthActivity"
+            android:name=".modules.auth.presentation.register.RegisterActivity"
             android:exported="false"
-            android:label="@string/title_activity_auth"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".modules.auth.presentation.login.LoginActivity"
+            android:exported="true"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

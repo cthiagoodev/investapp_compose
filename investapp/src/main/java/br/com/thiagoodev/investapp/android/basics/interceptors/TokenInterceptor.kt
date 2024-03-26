@@ -1,4 +1,4 @@
-package br.com.thiagoodev.investapp.android.shared.interceptors
+package br.com.thiagoodev.investapp.android.basics.interceptors
 
 import okhttp3.Interceptor
 import okhttp3.Response
