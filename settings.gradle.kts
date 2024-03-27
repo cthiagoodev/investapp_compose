@@ -15,5 +15,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "investapp_compose"
-include(":investapp")
+include(":app")
 include(":shared")
