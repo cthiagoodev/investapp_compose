@@ -5,7 +5,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 
 fun User.Companion.fromFirebase(authResult: AuthResult): User {
-    val user: FirebaseUser = authResult.user!!;
+    val user: FirebaseUser = authResult.user!!
     return User(
         id = user.uid,
         name = user.displayName ?: "",
