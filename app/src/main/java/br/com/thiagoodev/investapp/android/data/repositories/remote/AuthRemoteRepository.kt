@@ -9,7 +9,7 @@ import com.google.firebase.auth.AuthResult
 
 class AuthRemoteRepository(private val source: AuthRemoteDataSource) : IAuthRemoteRepository {
     override suspend fun auth(authDTO: AuthDTO): User {
-        val result: AuthResult = source.auth(authDTO.email, authDTO.password)
-        return User.fromFirebase(result)
+        val authResult: AuthResult = source.auth(authDTO.email, authDTO.password)
+        return User.fromFirebase(authResult)
     }
 }
