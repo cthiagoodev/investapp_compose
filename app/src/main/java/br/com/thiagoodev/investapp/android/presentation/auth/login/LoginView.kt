@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.thiagoodev.investapp.android.R
+import br.com.thiagoodev.investapp.android.presentation.auth.login.components.FormLogin
 import br.com.thiagoodev.investapp.android.presentation.theme.Theme
 
 @Composable
@@ -32,6 +33,8 @@ fun LoginView() {
                     blendMode = BlendMode.Color,
                 )
             )
+
+            FormLogin()
         }
     }
 }

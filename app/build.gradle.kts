@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
+    implementation(libs.androidx.hilt.navigation.compose)
     debugImplementation(libs.compose.ui.tooling)
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
