@@ -22,23 +22,77 @@ fun Theme(
 ) {
     val colors = if (darkTheme) {
         darkColorScheme(
-            primary = Color(0xFFBB86FC),
-            secondary = Color(0xFF03DAC5),
-            tertiary = Color(0xFF3700B3)
+            primary = Color(0xFF00ACEE),
+            secondary = Color.Black,
+            background = Color.White,
+            surface = Color.White,
+            onPrimary = Color.White,
+            onSecondary = Color.White,
+            onBackground = Color.White,
+            onSurface = Color.White,
+            error = Color.Red,
+            onError = Color.White
         )
     } else {
         lightColorScheme(
-            primary = Color(0xFF6200EE),
-            secondary = Color(0xFF03DAC5),
-            tertiary = Color(0xFF3700B3)
+            primary = Color(0xFF00ACEE),
+            secondary = Color.Black,
+            background = Color.White,
+            surface = Color.White,
+            onPrimary = Color.White,
+            onSecondary = Color.White,
+            onBackground = Color.White,
+            onSurface = Color.White,
+            error = Color.Red,
+            onError = Color.White
         )
     }
     val typography = Typography(
+        titleLarge = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.W700,
+            fontSize = 32.sp
+        ),
+        titleMedium = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.W600,
+            fontSize = 24.sp
+        ),
+        titleSmall = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.W500,
+            fontSize = 18.sp
+        ),
+        bodyLarge = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.W400,
+            fontSize = 16.sp
+        ),
         bodyMedium = TextStyle(
             fontFamily = FontFamily.Default,
-            fontWeight = FontWeight.Normal,
+            fontWeight = FontWeight.W300,
+            fontSize = 14.sp
+        ),
+        bodySmall = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.W300,
+            fontSize = 12.sp
+        ),
+        labelLarge = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.W400,
             fontSize = 16.sp
-        )
+        ),
+        labelMedium = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.W300,
+            fontSize = 14.sp
+        ),
+        labelSmall = TextStyle(
+            fontFamily = FontFamily.Default,
+            fontWeight = FontWeight.W300,
+            fontSize = 12.sp
+        ),
     )
     val shapes = Shapes(
         small = RoundedCornerShape(4.dp),
