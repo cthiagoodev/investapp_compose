@@ -18,7 +18,6 @@ import br.com.thiagoodev.investapp.android.presentation.theme.Theme
 @Composable
 fun LoginView() {
     Theme {
-        // A surface container using the 'background' color from the theme
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background,
@@ -33,8 +32,6 @@ fun LoginView() {
                     blendMode = BlendMode.Color,
                 )
             )
-
-
         }
     }
 }

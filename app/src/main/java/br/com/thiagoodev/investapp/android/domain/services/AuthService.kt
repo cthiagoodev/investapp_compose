@@ -5,7 +5,7 @@ import br.com.thiagoodev.investapp.android.domain.models.User
 import br.com.thiagoodev.investapp.android.domain.repositories.remote.IAuthRemoteRepository
 
 class AuthService(private val remoteRepository: IAuthRemoteRepository) {
-    suspend fun login(authDTO: AuthDTO): User {
+    suspend fun auth(authDTO: AuthDTO): User {
         return remoteRepository.auth(authDTO)
     }
 }
