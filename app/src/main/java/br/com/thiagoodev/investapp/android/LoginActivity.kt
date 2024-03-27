@@ -6,7 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import br.com.thiagoodev.investapp.android.presentation.auth.login.LoginView
 import br.com.thiagoodev.investapp.android.presentation.auth.login.LoginViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : ComponentActivity() {
     val viewModel: LoginViewModel by viewModels()
 
