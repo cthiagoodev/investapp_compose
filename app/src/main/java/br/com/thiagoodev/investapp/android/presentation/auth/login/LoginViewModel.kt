@@ -9,8 +9,12 @@ import br.com.thiagoodev.investapp.android.core.models.AsyncState
 import br.com.thiagoodev.investapp.android.domain.dtos.AuthDTO
 import br.com.thiagoodev.investapp.android.domain.models.User
 import br.com.thiagoodev.investapp.android.domain.services.AuthService
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthException
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @HiltViewModel
 class LoginViewModel(private val authService: AuthService) : ViewModel() {
@@ -26,22 +30,30 @@ class LoginViewModel(private val authService: AuthService) : ViewModel() {
         passwordValue = value
     }
 
-    suspend fun onPressedLogin() {
-        userState.value = AsyncState(status = AsyncState.State.Loading)
-        try {
-            val dto = AuthDTO(emailValue.text, passwordValue.text)
-            val result = authService.auth(dto)
-            userState.value = AsyncState(result, AsyncState.State.Success)
-        } catch (error: FirebaseAuthInvalidCredentialsException) {
-            Log.i("error", error.toString())
-            userState.value = AsyncState(null, AsyncState.State.Error, error.toString())
-        } catch (error: Exception) {
-            Log.i("error", error.toString())
-            userState.value = AsyncState(
-                null,
-                AsyncState.State.Error,
-                "Ocorreu um erro ao fazer login",
-            )
+    fun onPressed() {
+        userState.value = AsyncState(null, AsyncState.State.Loading)
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val dto = AuthDTO(emailValue.text, passwordValue.text)
+                val result = authService.auth(dto)
+                withContext(Dispatchers.Main) {
+                    userState.value = AsyncState(result, AsyncState.State.Success)
+                }
+            } catch (error: FirebaseAuthException) {
+                Log.i("error", error.toString())
+                withContext(Dispatchers.Main) {
+                    userState.value = AsyncState(null, AsyncState.State.Error, error.toString())
+                }
+            } catch (error: Exception) {
+                Log.i("error", error.toString())
+                withContext(Dispatchers.Main) {
+                    userState.value = AsyncState(
+                        null,
+                        AsyncState.State.Error,
+                        "Ocorreu um erro ao fazer login",
+                    )
+                }
+            }
         }
     }
 }

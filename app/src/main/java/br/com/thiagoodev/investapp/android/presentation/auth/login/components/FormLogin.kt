@@ -1,5 +1,8 @@
 package br.com.thiagoodev.investapp.android.presentation.auth.login.components
 
+import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import br.com.thiagoodev.investapp.android.presentation.auth.login.LoginViewModel
@@ -18,4 +21,13 @@ fun FormLogin(viewModel: LoginViewModel = hiltViewModel()) {
         value = viewModel.passwordValue,
         onValueChange = { viewModel.onChangePassword(it) },
     )
+
+    ElevatedButton(
+        onClick = { viewModel.onPressed() },
+    ) {
+        Text(
+            "Entrar",
+            style = MaterialTheme.typography.bodySmall,
+        )
+    }
 }
