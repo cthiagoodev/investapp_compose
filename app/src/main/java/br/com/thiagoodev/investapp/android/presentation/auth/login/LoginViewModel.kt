@@ -30,7 +30,7 @@ class LoginViewModel(private val authService: AuthService) : ViewModel() {
         passwordValue = value
     }
 
-    fun onPressed() {
+    fun onPressedLogin() {
         userState.value = AsyncState(null, AsyncState.State.Loading)
         CoroutineScope(Dispatchers.IO).launch {
             try {

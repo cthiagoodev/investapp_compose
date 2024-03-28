@@ -23,7 +23,7 @@ fun FormLogin(viewModel: LoginViewModel = hiltViewModel()) {
     )
 
     ElevatedButton(
-        onClick = { viewModel.onPressed() },
+        onClick = { viewModel.onPressedLogin() },
     ) {
         Text(
             "Entrar",
