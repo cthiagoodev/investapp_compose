@@ -19,23 +19,29 @@ class LoginViewModel(private val authService: AuthService) : ViewModel() {
     val userState: MutableState<AsyncState<User>> = mutableStateOf(AsyncState())
 
     fun onChangeEmail(value: TextFieldValue) {
-        this.emailValue = value;
+        emailValue = value
     }
 
     fun onChangePassword(value: TextFieldValue) {
-        this.passwordValue = value
+        passwordValue = value
     }
 
     suspend fun onPressedLogin() {
         userState.value = AsyncState(status = AsyncState.State.Loading)
         try {
-            val userResult: User = authService.auth(AuthDTO(emailValue.text, passwordValue.text))
-            userState.value = AsyncState(userResult, AsyncState.State.Success)
+            val dto = AuthDTO(emailValue.text, passwordValue.text)
+            val result = authService.auth(dto)
+            userState.value = AsyncState(result, AsyncState.State.Success)
         } catch (error: FirebaseAuthInvalidCredentialsException) {
-            Log.i(error.toString(), error.toString())
-            userState.value = AsyncState(null, AsyncState.State.Error)
+            Log.i("error", error.toString())
+            userState.value = AsyncState(null, AsyncState.State.Error, error.toString())
         } catch (error: Exception) {
-            userState.value = AsyncState(null, AsyncState.State.Error)
+            Log.i("error", error.toString())
+            userState.value = AsyncState(
+                null,
+                AsyncState.State.Error,
+                "Ocorreu um erro ao fazer login",
+            )
         }
     }
 }
