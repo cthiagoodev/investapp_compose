@@ -4,8 +4,9 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
-class AuthRemoteDataSource(private val auth: FirebaseAuth) {
+class AuthRemoteDataSource @Inject constructor(private val auth: FirebaseAuth) {
     suspend fun auth(email: String, password: String): AuthResult {
         val authTask: Task<AuthResult> = auth.signInWithEmailAndPassword(email, password)
         return authTask.await()

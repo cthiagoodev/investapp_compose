@@ -15,9 +15,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel(private val authService: AuthService) : ViewModel() {
+class LoginViewModel @Inject constructor(private val authService: AuthService) : ViewModel() {
     var emailValue: TextFieldValue = TextFieldValue()
     var passwordValue: TextFieldValue = TextFieldValue()
     val userState: MutableState<AsyncState<User>> = mutableStateOf(AsyncState())
