@@ -1,4 +1,4 @@
-package br.com.thiagoodev.investapp.android.di.auth
+package br.com.thiagoodev.investapp.android.di
 
 import br.com.thiagoodev.investapp.android.data.datasources.remote.AuthRemoteDataSource
 import br.com.thiagoodev.investapp.android.data.repositories.remote.AuthRemoteRepository
@@ -6,10 +6,10 @@ import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.scopes.ViewModelScoped
+import dagger.hilt.components.SingletonComponent
 
 @Module
-@InstallIn(ViewModelScoped::class)
+@InstallIn(SingletonComponent::class)
 class AuthServiceModule {
     @Provides
     fun provideIAuthRemoteRepository(auth: FirebaseAuth): AuthRemoteRepository {

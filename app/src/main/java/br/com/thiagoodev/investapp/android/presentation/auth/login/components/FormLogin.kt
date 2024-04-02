@@ -9,7 +9,7 @@ import br.com.thiagoodev.investapp.android.presentation.auth.login.LoginViewMode
 import br.com.thiagoodev.investapp.android.presentation.components.CustomOutlinedTextField
 
 @Composable
-fun FormLogin(viewModel: LoginViewModel = hiltViewModel()) {
+fun FormLogin(viewModel: LoginViewModel = hiltViewModel<LoginViewModel>()) {
     CustomOutlinedTextField(
         value = viewModel.emailValue,
         label = "E-mail",
