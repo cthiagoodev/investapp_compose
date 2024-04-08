@@ -1,4 +1,4 @@
-## InvestApp
+_## InvestApp
 
 O **InvestApp** é um aplicativo para Android e iOS que oferece informações sobre cotações e criptomoedas. Ele foi desenvolvido utilizando as seguintes tecnologias:
 
@@ -41,4 +41,4 @@ Contribuições são sempre bem-vindas! Se você deseja colaborar com o desenvol
 
 ## Sobre
 
-Este projeto é um aplicativo de cotação de criptomoedas. Se tiver alguma dúvida ou sugestão, não hesite em entrar em contato! 
+Este projeto é um aplicativo de cotação de criptomoedas. Se tiver alguma dúvida ou sugestão, não hesite em entrar em contato!_ 
