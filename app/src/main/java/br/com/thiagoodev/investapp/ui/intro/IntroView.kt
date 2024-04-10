@@ -24,7 +24,7 @@ import br.com.thiagoodev.investapp.ui.intro.components.SignInButton
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun IntroView() {
+fun IntroView(navigator: IntroNavigator) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = Color.Black,
@@ -63,7 +63,7 @@ fun IntroView() {
                     modifier = Modifier.fillMaxWidth(),
                     icon = R.drawable.right_to_bracket_solid,
                     text = "Entrar usando email e senha",
-                    onClick = {},
+                    onClick = navigator.navigateLoginEmailAndPassword,
                 )
             }
 
@@ -74,7 +74,7 @@ fun IntroView() {
                     modifier = Modifier.fillMaxWidth(),
                     icon = R.drawable.google,
                     text = "Entrar usando o Google",
-                    onClick = {},
+                    onClick = navigator.navigateLoginEmailAndPassword,
                 )
             }
 
@@ -82,7 +82,7 @@ fun IntroView() {
                 modifier = Modifier.fillMaxWidth(),
                 icon = R.drawable.apple,
                 text = "Entrar usando a Apple",
-                onClick = {},
+                onClick = navigator.navigateLoginEmailAndPassword,
             )
          }
     }
