@@ -1,4 +1,4 @@
-package br.com.thiagoodev.investapp.ui.login.components
+package br.com.thiagoodev.investapp.ui.intro.components
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -28,6 +29,7 @@ fun SignInButton(
         modifier = modifier,
         onClick = onClick,
         contentPadding = PaddingValues(20.dp),
+        shape = RoundedCornerShape(100.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
