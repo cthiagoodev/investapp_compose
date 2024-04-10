@@ -3,11 +3,12 @@ package br.com.thiagoodev.investapp.ui.login
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,8 +21,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import br.com.thiagoodev.investapp.R
 import br.com.thiagoodev.investapp.ui.login.components.SignInButton
-import br.com.thiagoodev.investapp.ui.login.components.SignWithEmailAndPasswordButton
-
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -36,7 +35,7 @@ fun LoginView() {
             alignment = Alignment.Center,
             painter = painterResource(R.drawable.login_background),
             contentDescription = "Background Login",
-            alpha = .5f,
+            alpha = .3f,
             colorFilter = ColorFilter.tint(
                 color = Color.Black.copy(
                     alpha = .5f,
@@ -44,14 +43,41 @@ fun LoginView() {
                 blendMode = BlendMode.Overlay,
             )
         )
+
         Column(
-             modifier = Modifier.fillMaxSize().padding(20.dp),
+             modifier = Modifier
+                 .fillMaxSize()
+                 .padding(20.dp),
              horizontalAlignment = Alignment.CenterHorizontally,
              verticalArrangement = Arrangement.Center,
          ) {
+            Box(
+                modifier = Modifier.padding(bottom = 10.dp),
+            ) {
+                SignInButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    icon = R.drawable.right_to_bracket_solid,
+                    text = "Entrar usando email e senha",
+                    onClick = {},
+                )
+            }
+
+            Box(
+                modifier = Modifier.padding(bottom = 10.dp),
+            ) {
+                SignInButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    icon = R.drawable.google,
+                    text = "Entrar usando o Google",
+                    onClick = {},
+                )
+            }
+
             SignInButton(
-                icon = R.drawable.right_to_bracket_solid,
-                text = "Entrar usando email e senha",
+                modifier = Modifier.fillMaxWidth(),
+                icon = R.drawable.apple,
+                text = "Entrar usando a Apple",
+                onClick = {},
             )
          }
     }
