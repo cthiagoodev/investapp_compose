@@ -1,70 +1,122 @@
 package br.com.thiagoodev.investapp.ui.theme
 
-import android.app.Activity
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.WindowCompat
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.googlefonts.Font
+import androidx.compose.ui.text.googlefonts.GoogleFont
+import androidx.compose.ui.unit.sp
+import br.com.thiagoodev.investapp.config.googleFontProvider
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
-)
+val defaultFont: FontFamily = FontFamily(Font(
+    googleFont = GoogleFont("Montserrat"),
+    fontProvider = googleFontProvider,
+))
 
 @Composable
-fun InvestappTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
-) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
+fun AppTheme(content: @Composable () -> Unit) {
+    val colorScheme = ColorScheme(
+        primary = Color(0xFF6200EE),
+        secondary = Color(0xFF03DAC5),
+        background = Color.White,
+        surface = Color.White,
+        onPrimary = Color.White,
+        onSecondary = Color.Black,
+        onBackground = Color.Black,
+        onSurface = Color.Black,
+        error = Color(0xFFB00020),
+        errorContainer = Color.Red,
+        inverseOnSurface = Color.White,
+        inversePrimary = Color.White,
+        inverseSurface = Color.Black,
+        onError = Color.White,
+        onErrorContainer = Color.Black,
+        onPrimaryContainer = Color.White,
+        onSecondaryContainer = Color.Black,
+        onSurfaceVariant = Color.Black,
+        onTertiary = Color.Black,
+        onTertiaryContainer = Color.Black,
+        outline = Color(0xFFCCCCCC),
+        outlineVariant = Color(0xFF999999),
+        scrim = Color(0x99000000),
+        primaryContainer = Color(0xFFEDE7F6),
+        secondaryContainer = Color(0xFFB2DFDB),
+        surfaceTint = Color(0x1F000000),
+        surfaceVariant = Color(0xFFFAFAFA),
+        tertiary = Color(0xFF9E9E9E),
+        tertiaryContainer = Color(0xFFE0E0E0),
+    )
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-    val view = LocalView.current
-    if (!view.isInEditMode) {
-        SideEffect {
-            val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
-        }
-    }
+    val typography = Typography(
+        headlineLarge = TextStyle(
+            fontFamily = defaultFont,
+            fontWeight = FontWeight.Bold,
+            fontSize = 30.sp,
+            letterSpacing = 0.sp,
+        ),
+        headlineMedium = TextStyle(
+            fontFamily = defaultFont,
+            fontWeight = FontWeight.Bold,
+            fontSize = 24.sp,
+            letterSpacing = 0.sp,
+        ),
+        headlineSmall = TextStyle(
+            fontFamily = defaultFont,
+            fontSize = 20.sp,
+            letterSpacing = 0.sp,
+        ),
+        titleLarge = TextStyle(
+            fontFamily = defaultFont,
+            fontWeight = FontWeight.Bold,
+            fontSize = 18.sp,
+            letterSpacing = 0.sp,
+        ),
+        titleMedium = TextStyle(
+            fontFamily = defaultFont,
+            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp,
+            letterSpacing = 0.sp,
+        ),
+        titleSmall = TextStyle(
+            fontFamily = defaultFont,
+            fontWeight = FontWeight.Bold,
+            fontSize = 14.sp,
+            letterSpacing = 0.sp,
+        ),
+        displayLarge = TextStyle(
+            fontFamily = defaultFont,
+            fontWeight = FontWeight.Normal,
+            fontSize = 16.sp,
+            letterSpacing = 0.sp,
+        ),
+        displayMedium = TextStyle(
+            fontFamily = defaultFont,
+            fontWeight = FontWeight.Normal,
+            fontSize = 14.sp,
+            letterSpacing = 0.sp,
+        ),
+        bodyLarge = TextStyle(
+            fontFamily = defaultFont,
+            fontWeight = FontWeight.Normal,
+            fontSize = 16.sp,
+            letterSpacing = 0.sp,
+        ),
+        bodySmall = TextStyle(
+            fontFamily = defaultFont,
+            fontWeight = FontWeight.Normal,
+            fontSize = 14.sp,
+            letterSpacing = 0.sp,
+        ),
+    )
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
-        content = content
+        typography = typography,
+        content = content,
     )
 }
