@@ -19,6 +19,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import br.com.thiagoodev.investapp.R
+import br.com.thiagoodev.investapp.ui.login.components.SignInButton
 import br.com.thiagoodev.investapp.ui.login.components.SignWithEmailAndPasswordButton
 
 
@@ -34,7 +35,7 @@ fun LoginView() {
             contentScale = ContentScale.Crop,
             alignment = Alignment.Center,
             painter = painterResource(R.drawable.login_background),
-            contentDescription = null,
+            contentDescription = "Background Login",
             alpha = .5f,
             colorFilter = ColorFilter.tint(
                 color = Color.Black.copy(
@@ -48,7 +49,10 @@ fun LoginView() {
              horizontalAlignment = Alignment.CenterHorizontally,
              verticalArrangement = Arrangement.Center,
          ) {
-            SignWithEmailAndPasswordButton()
+            SignInButton(
+                icon = R.drawable.right_to_bracket_solid,
+                text = "Entrar usando email e senha",
+            )
          }
     }
 }
