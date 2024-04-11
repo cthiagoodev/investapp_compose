@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "301945572776",
-    "project_id": "investapp-783b3",
-    "storage_bucket": "investapp-783b3.appspot.com"
+    "project_number": "767331586016",
+    "project_id": "investapp-thiagoodev",
+    "storage_bucket": "investapp-thiagoodev.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:301945572776:android:a9e9bcf6444f91b8daa19d",
+        "mobilesdk_app_id": "1:767331586016:android:d192e888f8420bef766585",
         "android_client_info": {
           "package_name": "br.com.thiagoodev.investapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAswTz6xoMBq7LA5TMaR1GpGvIi-uC3sz8"
+          "current_key": "AIzaSyCydpuqOzFGWJqgCfRJzjoJLFPrAGA3btc"
         }
       ],
       "services": {
