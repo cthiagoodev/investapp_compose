@@ -1,4 +1,4 @@
-package br.com.thiagoodev.investapp.ui.login.components
+package br.com.thiagoodev.investapp.ui.common.inputs
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun InputLogin(
+fun DefaultInput(
     placeholder: String,
     value: String,
     onValueChange: (String) -> Unit,
