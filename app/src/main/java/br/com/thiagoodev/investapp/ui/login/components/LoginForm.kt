@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import br.com.thiagoodev.investapp.ui.common.buttons.DefaultButton
@@ -47,6 +48,8 @@ fun LoginForm(viewModel: LoginViewModel = hiltViewModel()) {
             text = "Entrar",
             onClick = {},
             enable = allowLoginState.value!!,
+            backgroundColor = Color.White,
+            disabledBackgroundColor = Color.White.copy(alpha = .2f),
         )
     }
 }
