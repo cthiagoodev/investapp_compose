@@ -1,5 +1,6 @@
 package br.com.thiagoodev.investapp.ui.common.buttons
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,11 +26,21 @@ fun DefaultButton(
     backgroundColor: Color = MaterialTheme.colorScheme.primary,
     disabledBackgroundColor: Color = MaterialTheme.colorScheme.primary.copy(alpha = .2f),
 ) {
+    val backgroundColorState = animateColorAsState(
+        targetValue = if(enable) backgroundColor else disabledBackgroundColor,
+        label = "Button Color",
+    )
+
+    val textColorState = animateColorAsState(
+        targetValue = if(enable) textColor else disabledTextColor,
+        label = "Text Color",
+    )
+
     ElevatedButton(
         modifier = modifier,
         enabled = enable,
         colors = ButtonDefaults.elevatedButtonColors(
-            containerColor = backgroundColor,
+            containerColor = backgroundColorState.value,
             disabledContainerColor = disabledBackgroundColor,
         ),
         elevation = ButtonDefaults.elevatedButtonElevation(defaultElevation = 0.dp),
@@ -39,7 +50,7 @@ fun DefaultButton(
         Text(
             text = text,
             style = MaterialTheme.typography.bodySmall.copy(
-                color = if(enable) textColor else disabledTextColor
+                color = textColorState.value,
             ),
         )
     }
