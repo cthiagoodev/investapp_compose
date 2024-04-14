@@ -19,7 +19,6 @@ import br.com.thiagoodev.investapp.ui.login.LoginViewModel
 fun LoginForm(viewModel: LoginViewModel = hiltViewModel()) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
             .padding(10.dp),
     ) {
         Box(
