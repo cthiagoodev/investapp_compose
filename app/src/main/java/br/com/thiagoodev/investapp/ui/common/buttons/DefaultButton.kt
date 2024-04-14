@@ -20,6 +20,8 @@ fun DefaultButton(
     enable: Boolean = true,
     onClick: () -> Unit,
     text: String,
+    textColor: Color = Color.White,
+    disabledTextColor: Color = Color.White.copy(alpha = .2f),
     backgroundColor: Color = MaterialTheme.colorScheme.primary,
     disabledBackgroundColor: Color = MaterialTheme.colorScheme.primary.copy(alpha = .2f),
 ) {
@@ -37,7 +39,7 @@ fun DefaultButton(
         Text(
             text = text,
             style = MaterialTheme.typography.bodySmall.copy(
-                color = if(enable) Color.White else Color.White.copy(alpha = .2f)
+                color = if(enable) textColor else disabledTextColor
             ),
         )
     }

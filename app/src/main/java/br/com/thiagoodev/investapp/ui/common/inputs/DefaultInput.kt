@@ -22,7 +22,9 @@ fun DefaultInput(
         value = value,
         onValueChange = onValueChange,
         shape = RoundedCornerShape(10.dp),
-        textStyle = MaterialTheme.typography.bodySmall,
+        textStyle = MaterialTheme.typography.bodySmall.copy(
+            color = Color.White,
+        ),
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
