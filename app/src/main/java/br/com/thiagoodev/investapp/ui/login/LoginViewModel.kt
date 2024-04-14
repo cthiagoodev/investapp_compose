@@ -3,6 +3,7 @@ package br.com.thiagoodev.investapp.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import br.com.thiagoodev.investapp.domain.models.User
 import br.com.thiagoodev.investapp.domain.services.AuthService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -17,6 +18,9 @@ class LoginViewModel @Inject constructor(private val service: AuthService) : Vie
 
     private val allowLoginState = MutableLiveData(false)
     val allowLogin: LiveData<Boolean> = allowLoginState
+
+    private val userState = MutableLiveData<User>(null)
+    val user: LiveData<User> = userState
 
     fun onEmailChange(value: String) {
         emailState.value = value
