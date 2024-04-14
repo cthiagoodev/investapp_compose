@@ -1,10 +1,9 @@
 plugins {
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.gms.google-services")
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android")
-
 }
 
 android {
@@ -72,15 +71,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-compiler:2.51.1")
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-auth")
-
-
 }
 
-// Allow references to generated code
 kapt {
     correctErrorTypes = true
 }
