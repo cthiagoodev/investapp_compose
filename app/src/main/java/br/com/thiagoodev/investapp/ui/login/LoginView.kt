@@ -1,40 +1,61 @@
 package br.com.thiagoodev.investapp.ui.login
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import br.com.thiagoodev.investapp.R
-import br.com.thiagoodev.investapp.ui.login.components.InputLogin
+import br.com.thiagoodev.investapp.ui.login.components.LoginForm
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LoginView() {
-    val configuration = LocalConfiguration.current
 
+    val interactionSource = remember { MutableInteractionSource() }
+    val focusRequester = remember { FocusRequester() }
+    val localKeyboardController: SoftwareKeyboardController? = LocalSoftwareKeyboardController.current
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .focusRequester(focusRequester)
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null,
+            ) {
+                focusRequester.freeFocus()
+                localKeyboardController?.hide()
+            },
     ) {
+        val configuration: Configuration = LocalConfiguration.current
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -46,61 +67,24 @@ fun LoginView() {
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(20.dp),
-                horizontalAlignment = Alignment.Start
+                horizontalAlignment = Alignment.Start,
             ) {
-                Image(
-                    modifier = Modifier.height(100.dp),
-                    painter = painterResource(R.drawable.logo),
-                    contentDescription = "Logo",
-                )
+                Column {
+                    Image(
+                        modifier = Modifier.height(100.dp),
+                        painter = painterResource(R.drawable.logo),
+                        contentDescription = "Logo",
+                    )
 
-                Text(
-                    text = "Faça login na sua plataforma de investimentos online",
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        color = Color.White,
-                    ),
-                )
-
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(10.dp),
-                    verticalArrangement = Arrangement.Bottom,
-                ) {
-                    Box(
-                        modifier = Modifier.padding(bottom = 10.dp)
-                    ) {
-                        InputLogin(
-                            value = "",
-                            placeholder = "E-mail",
-                            onValueChange = {},
-                        )
-                    }
-
-                    Box(
-                        modifier = Modifier.padding(bottom = 10.dp),
-                    ) {
-                        InputLogin(
-                            value = "",
-                            placeholder = "Senha",
-                            onValueChange = {},
-                        )
-                    }
-
-                    ElevatedButton(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(50.dp),
-                        elevation = ButtonDefaults.elevatedButtonElevation(defaultElevation = 0.dp),
-                        shape = RoundedCornerShape(10.dp),
-                        onClick = { /*TODO*/ },
-                    ) {
-                        Text(
-                            text = "Entrar",
-                            style = MaterialTheme.typography.bodySmall,
-                        )
-                    }
+                    Text(
+                        text = "Faça login na sua plataforma de investimentos online",
+                        style = MaterialTheme.typography.titleLarge.copy(
+                            color = Color.White,
+                        ),
+                    )
                 }
+
+                LoginForm()
             }
         }
 
