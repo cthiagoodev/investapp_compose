@@ -1,4 +1,4 @@
-package br.com.thiagoodev.investapp.ui.login.components
+package br.com.thiagoodev.investapp.ui.common.inputs
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,17 +12,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun InputLogin(
+fun DefaultInput(
     placeholder: String,
     value: String,
+    enable: Boolean = true,
     onValueChange: (String) -> Unit,
 ) {
     TextField(
         modifier = Modifier.fillMaxWidth(),
         value = value,
+        enabled = enable,
         onValueChange = onValueChange,
         shape = RoundedCornerShape(10.dp),
-        textStyle = MaterialTheme.typography.bodySmall,
+        textStyle = MaterialTheme.typography.bodySmall.copy(
+            color = Color.White,
+        ),
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
