@@ -5,9 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import br.com.thiagoodev.investapp.ui.intro.IntroNavigator
-import br.com.thiagoodev.investapp.ui.intro.IntroView
-import br.com.thiagoodev.investapp.ui.login.LoginView
+import br.com.thiagoodev.investapp.ui.home.HomeView
 
 @Composable
 fun NavigationConfig(
@@ -15,14 +13,8 @@ fun NavigationConfig(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Routes.intro,
+        startDestination = Routes.home,
     ) {
-        composable(Routes.intro) {
-            IntroView(IntroNavigator(
-                navigateLoginEmailAndPassword = { navController.navigate(Routes.login) }
-            ))
-        }
-
-        composable(Routes.login) { LoginView() }
+        composable(Routes.home) { HomeView() }
     }
 }
