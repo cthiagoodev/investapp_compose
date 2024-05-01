@@ -13,8 +13,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Capital() {
-    Column {
+fun Capital(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+    ) {
         Text(
             text = "Seu capítal",
             style = MaterialTheme.typography.titleSmall,

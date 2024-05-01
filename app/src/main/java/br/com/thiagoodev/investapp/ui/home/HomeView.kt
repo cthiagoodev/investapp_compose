@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -22,14 +23,25 @@ fun HomeView() {
         topBar = { AppBar() },
     ) {
         Column(
-            modifier = Modifier.padding(
-                top = 90.dp, start = 20.dp, end = 20.dp),
+            modifier = Modifier.padding(top = 90.dp),
         ) {
-            Capital()
-            Box(
-                modifier = Modifier.padding(top = 20.dp),
+            Capital(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp)
+            )
+
+            Chart(
+                modifier = Modifier
+                    .padding(top = 20.dp),
+            )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = 20.dp, end = 20.dp)
             ) {
-                Chart()
+
             }
         }
     }
