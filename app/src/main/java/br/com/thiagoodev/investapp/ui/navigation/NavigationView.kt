@@ -1,18 +1,19 @@
-package br.com.thiagoodev.investapp.config
+package br.com.thiagoodev.investapp.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import br.com.thiagoodev.investapp.config.Routes
 import br.com.thiagoodev.investapp.ui.home.HomeView
 
 @Composable
-fun NavigationConfig(
-    navController: NavHostController = rememberNavController()
-) {
+fun NavigationView(viewModel: NavigationViewModel = hiltViewModel()) {
+    viewModel.controller = rememberNavController()
+
     NavHost(
-        navController = navController,
+        navController = viewModel.controller,
         startDestination = Routes.home,
     ) {
         composable(Routes.home) { HomeView() }
