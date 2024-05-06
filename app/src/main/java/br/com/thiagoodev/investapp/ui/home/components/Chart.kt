@@ -19,8 +19,10 @@ import com.patrykandpatrick.vico.compose.cartesian.axis.rememberStartAxis
 import com.patrykandpatrick.vico.compose.cartesian.layer.rememberLineCartesianLayer
 import com.patrykandpatrick.vico.compose.cartesian.rememberCartesianChart
 import com.patrykandpatrick.vico.core.cartesian.data.CartesianChartModelProducer
+import com.patrykandpatrick.vico.core.cartesian.data.CartesianValueFormatter
 import com.patrykandpatrick.vico.core.cartesian.data.columnSeries
 import com.patrykandpatrick.vico.core.cartesian.data.lineSeries
+import com.patrykandpatrick.vico.core.common.data.ExtraStore
 import com.patrykandpatrick.vico.core.common.shape.Shape
 
 @Composable
@@ -29,15 +31,31 @@ fun Chart(
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val modelProducer = remember { CartesianChartModelProducer.build() }
+    val labelListKey = ExtraStore.Key<List<String>>()
 
     LaunchedEffect(Unit) {
+        val bottomData: Map<String, Float> = mapOf(
+            "1D" to 1f,
+            "6M" to 2f,
+            "1A" to 3f,
+            "5A" to 4f,
+            "10A" to 5f,
+            "15A" to 6f,
+        )
+
         modelProducer.tryRunTransaction {
-            columnSeries(  )
+            columnSeries {
+                series(bottomData.values)
+            }
             lineSeries {
                 series(50, 250, 456.76, 1234.76, 834.76, 934.76)
             }
+
+            updateExtras { it[labelListKey] = bottomData.keys.toList() }
         }
     }
+
+    val formatter = CartesianValueFormatter { x, chartValues, _ -> chartValues.model.extraStore[labelListKey][x.toInt()] }
 
     Box(
         modifier = modifier,
@@ -59,12 +77,12 @@ fun Chart(
                             alpha = .1f,
                         )
                     ),
-
-                    ),
+                ),
                 bottomAxis = rememberBottomAxis(
                     label = rememberAxisLabelComponent(
                         color = Color.Gray,
                     ),
+                    valueFormatter = formatter,
                     guideline = null,
                     tick = null,
                     axis = null,
