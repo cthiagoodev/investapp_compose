@@ -11,6 +11,14 @@ import br.com.thiagoodev.investapp.ui.quotation.state.QuotationState
 @Composable
 fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
     val state: State<QuotationState?> = viewModel.uiState.observeAsState()
+
+    when(state.value) {
+        is QuotationState.Loading -> Loading()
+        is QuotationState.Success -> Success()
+        is QuotationState.Error -> Error()
+        is QuotationState.Empty -> Empty()
+        else -> Empty()
+    }
 }
 
 @Composable
@@ -27,3 +35,16 @@ private fun Loading(viewModel: QuotationViewModel = hiltViewModel()) {
     }
 }
 
+@Composable
+private fun Error(viewModel: QuotationViewModel = hiltViewModel()) {
+    LazyColumn {
+
+    }
+}
+
+@Composable
+private fun Empty(viewModel: QuotationViewModel = hiltViewModel()) {
+    LazyColumn {
+
+    }
+}
