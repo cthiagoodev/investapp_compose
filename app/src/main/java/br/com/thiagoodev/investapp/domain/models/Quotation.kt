@@ -10,4 +10,6 @@ data class Quotation (
     val itemsPerPage: Int,
     val totalCount: Int,
     val hasNextPage: Boolean
-)
+) {
+    companion object {}
+}
