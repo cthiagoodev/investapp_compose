@@ -11,6 +11,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.unit.sp
+import com.patrykandpatrick.vico.compose.common.ProvideVicoTheme
+import com.patrykandpatrick.vico.compose.m3.common.rememberM3VicoTheme
 
 val defaultFont: FontFamily = FontFamily(Font(
     googleFont = GoogleFont("Montserrat"),
@@ -75,21 +77,21 @@ fun AppTheme(content: @Composable () -> Unit) {
         titleLarge = TextStyle(
             fontFamily = defaultFont,
             fontWeight = FontWeight.Bold,
-            fontSize = 18.sp,
+            fontSize = 24.sp,
             color = Color.Black,
             letterSpacing = 0.sp,
         ),
         titleMedium = TextStyle(
             fontFamily = defaultFont,
             fontWeight = FontWeight.Bold,
-            fontSize = 16.sp,
+            fontSize = 20.sp,
             color = Color.Black,
             letterSpacing = 0.sp,
         ),
         titleSmall = TextStyle(
             fontFamily = defaultFont,
             fontWeight = FontWeight.Bold,
-            fontSize = 14.sp,
+            fontSize = 18.sp,
             color = Color.Black,
             letterSpacing = 0.sp,
         ),
@@ -126,6 +128,16 @@ fun AppTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = colorScheme,
         typography = typography,
+        content = content,
+    )
+}
+
+@Composable
+fun CustomVicoTheme(content: @Composable () -> Unit) {
+    val theme = rememberM3VicoTheme()
+
+    ProvideVicoTheme(
+        theme = theme,
         content = content,
     )
 }

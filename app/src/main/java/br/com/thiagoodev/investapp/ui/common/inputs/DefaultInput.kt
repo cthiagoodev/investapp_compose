@@ -16,12 +16,14 @@ fun DefaultInput(
     placeholder: String,
     value: String,
     enable: Boolean = true,
+    maxLines: Int = 1,
     onValueChange: (String) -> Unit,
 ) {
     TextField(
         modifier = Modifier.fillMaxWidth(),
         value = value,
         enabled = enable,
+        maxLines = maxLines,
         onValueChange = onValueChange,
         shape = RoundedCornerShape(10.dp),
         textStyle = MaterialTheme.typography.bodySmall.copy(
