@@ -17,14 +17,14 @@ class QuotationViewModel @Inject constructor(
     private val listQuotationsUseCase: ListQuotationsUseCase,
 ) : ViewModel() {
     private val _uiState: MutableLiveData<QuotationState> =
-        MutableLiveData(QuotationState.Success(Quotation.fake()))
+        MutableLiveData(QuotationState.Empty)
     val uiState: LiveData<QuotationState> = _uiState
 
     init {
         viewModelScope.launch { list() }
     }
 
-    suspend fun list() {
+    private suspend fun list() {
         _uiState.value = QuotationState.Loading
 
         try {
