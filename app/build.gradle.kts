@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.androidx.paging.compose)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    implementation(libs.dotenv.kotlin)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
