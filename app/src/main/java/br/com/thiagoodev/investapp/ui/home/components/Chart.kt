@@ -55,7 +55,8 @@ fun Chart(
         }
     }
 
-    val formatter = CartesianValueFormatter { x, chartValues, _ -> chartValues.model.extraStore[labelListKey][x.toInt()] }
+    val formatter = CartesianValueFormatter {
+        x, chartValues, _ -> chartValues.model.extraStore[labelListKey][x.toInt()] }
 
     Box(
         modifier = modifier,

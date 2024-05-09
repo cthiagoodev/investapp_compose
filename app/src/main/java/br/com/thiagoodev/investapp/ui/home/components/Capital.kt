@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.com.thiagoodev.investapp.core.extensions.AppGreen
 
 @Composable
 fun Capital(modifier: Modifier = Modifier) {
@@ -35,7 +36,7 @@ fun Capital(modifier: Modifier = Modifier) {
                 modifier = Modifier.padding(end = 5.dp),
                 text = "+R$1456,78(+12%)",
                 style = MaterialTheme.typography.bodySmall.copy(
-                    color = Color.Green,
+                    color = Color.AppGreen,
                 )
             )
 

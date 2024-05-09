@@ -58,7 +58,7 @@ private fun Success(viewModel: QuotationViewModel = hiltViewModel()) {
 @Composable
 private fun Loading(viewModel: QuotationViewModel = hiltViewModel()) {
     LazyColumn {
-
+        items(5) { QuotationItemShimmer() }
     }
 }
 
