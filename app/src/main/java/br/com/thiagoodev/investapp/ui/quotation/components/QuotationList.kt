@@ -1,6 +1,7 @@
 package br.com.thiagoodev.investapp.ui.quotation.components
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -37,19 +38,19 @@ private fun Success(viewModel: QuotationViewModel = hiltViewModel()) {
     val quotation: Quotation = success.quotation
     val stocks: List<Stock> = quotation.stocks
 
-    LazyColumn {
-        item {
-            Text(
-                modifier = Modifier.padding(bottom = 10.dp),
-                text = "Cotações disponíveis",
-                style = MaterialTheme.typography.titleSmall,
-            )
-        }
+    Column {
+        Text(
+            modifier = Modifier.padding(bottom = 10.dp),
+            text = "Cotações disponíveis",
+            style = MaterialTheme.typography.titleSmall,
+        )
 
-        items(stocks) {
-            Box(
-                modifier = Modifier.padding(bottom = 10.dp)
-            ) { QuotationItem(it) }
+        LazyColumn {
+            items(stocks) {
+                Box(
+                    modifier = Modifier.padding(bottom = 10.dp)
+                ) { QuotationItem(it) }
+            }
         }
     }
 }

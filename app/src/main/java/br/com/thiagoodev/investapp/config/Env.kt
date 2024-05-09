@@ -3,6 +3,6 @@ package br.com.thiagoodev.investapp.config
 import io.github.cdimascio.dotenv.dotenv
 
 val env = dotenv {
-    directory = "./"
-    filename = ".env"
+    directory = "/assets"
+    filename = "env"
 }
