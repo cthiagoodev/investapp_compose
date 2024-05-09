@@ -1,5 +1,6 @@
 package br.com.thiagoodev.investapp.di
 
+import br.com.thiagoodev.investapp.config.env
 import br.com.thiagoodev.investapp.core.interceptors.TokenInterceptor
 import dagger.Module
 import dagger.Provides
@@ -16,16 +17,16 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
-        val retrofit: Retrofit.Builder = Retrofit.Builder()
-        retrofit.baseUrl("https://brapi.dev/api")
-        retrofit.addConverterFactory(GsonConverterFactory.create())
-        retrofit.client(buildClient())
-        return retrofit.build()
+        return Retrofit.Builder()
+            .baseUrl(env.get("BASE_URL"))
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(buildClient())
+            .build()
     }
 
     private fun buildClient(): OkHttpClient {
-        val client: OkHttpClient.Builder = OkHttpClient.Builder()
-        client.addNetworkInterceptor(TokenInterceptor())
-        return client.build()
+        return OkHttpClient.Builder()
+            .addNetworkInterceptor(TokenInterceptor())
+            .build()
     }
 }

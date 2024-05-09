@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.thiagoodev.investapp.core.extensions.fake
 import br.com.thiagoodev.investapp.domain.models.Quotation
 import br.com.thiagoodev.investapp.domain.usecases.ListQuotationsUseCase
 import br.com.thiagoodev.investapp.ui.quotation.state.QuotationState
