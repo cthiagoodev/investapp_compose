@@ -64,7 +64,7 @@ fun Chart(
         CartesianChartHost(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(250.dp),
+                .height(200.dp),
             chart = rememberCartesianChart(
                 rememberLineCartesianLayer(),
                 startAxis = rememberStartAxis(

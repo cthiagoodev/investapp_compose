@@ -27,7 +27,7 @@ fun Capital(modifier: Modifier = Modifier) {
             text = "R$ 200.000,00",
             style = MaterialTheme.typography.titleLarge.copy(
                 fontWeight = FontWeight.Bold,
-                fontSize = 34.sp,
+                fontSize = 30.sp,
             ),
         )
 
