@@ -11,11 +11,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -85,6 +87,7 @@ fun QuotationItemShimmer() {
         modifier = Modifier
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -92,39 +95,41 @@ fun QuotationItemShimmer() {
             Box(
                 modifier = Modifier
                     .size(50.dp)
-                    .background(Color.Gray, shape = CircleShape)
-                    .shimmer(),
+                    .shimmer()
+                    .background(Color.Gray, shape = CircleShape),
             )
 
             Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp)
-                    .padding(start = 10.dp)
-                    .background(Color.Gray)
-                    .shimmer(),
+                    .width(100.dp)
+                    .height(20.dp)
+                    .padding(start = 10.dp, end = 10.dp)
+                    .shimmer()
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.Gray),
             )
         }
 
         Column(
             horizontalAlignment = Alignment.End,
+            verticalArrangement = Arrangement.Center
         ) {
             Box(
                 modifier = Modifier
                     .width(50.dp)
-                    .height(20.dp)
-                    .padding(start = 10.dp)
-                    .background(Color.Gray)
-                    .shimmer(),
+                    .height(5.dp)
+                    .shimmer()
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.Gray),
             )
 
             Box(
                 modifier = Modifier
-                    .width(50.dp)
-                    .height(20.dp)
-                    .padding(start = 10.dp)
-                    .background(Color.Gray)
-                    .shimmer(),
+                    .width(40.dp)
+                    .height(5.dp)
+                    .shimmer()
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(Color.Gray),
             )
         }
     }

@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import br.com.thiagoodev.investapp.domain.models.Quotation
 import br.com.thiagoodev.investapp.domain.models.Stock
+import br.com.thiagoodev.investapp.ui.common.empty.EmptyState
+import br.com.thiagoodev.investapp.ui.common.empty.ErrorState
 import br.com.thiagoodev.investapp.ui.quotation.QuotationViewModel
 import br.com.thiagoodev.investapp.ui.quotation.state.QuotationState
 
@@ -25,9 +27,10 @@ fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
     when(state.value) {
         is QuotationState.Loading -> Loading()
         is QuotationState.Success -> Success()
-        is QuotationState.Error -> Error()
-        is QuotationState.Empty -> Empty()
-        else -> Empty()
+        is QuotationState.Error -> ErrorState(
+            (state.value as QuotationState.Error).error.message ?: "")
+        is QuotationState.Empty -> EmptyState("Não há nenhuma informação por enquanto")
+        else -> EmptyState("Não há nenhuma informação por enquanto")
     }
 }
 
@@ -56,22 +59,13 @@ private fun Success(viewModel: QuotationViewModel = hiltViewModel()) {
 }
 
 @Composable
-private fun Loading(viewModel: QuotationViewModel = hiltViewModel()) {
+private fun Loading() {
     LazyColumn {
-        items(5) { QuotationItemShimmer() }
-    }
-}
-
-@Composable
-private fun Error(viewModel: QuotationViewModel = hiltViewModel()) {
-    LazyColumn {
-
-    }
-}
-
-@Composable
-private fun Empty(viewModel: QuotationViewModel = hiltViewModel()) {
-    LazyColumn {
-
+        items(5) {
+            Box(
+                modifier = Modifier.padding(bottom = 10.dp)
+            ) {
+                QuotationItemShimmer()
+            } }
     }
 }
