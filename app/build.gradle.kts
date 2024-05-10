@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.dotenv.kotlin)
     implementation(libs.compose.shimmer)
+    implementation(libs.coil.svg)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

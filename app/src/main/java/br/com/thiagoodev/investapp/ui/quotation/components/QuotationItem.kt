@@ -19,12 +19,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import br.com.thiagoodev.investapp.core.extensions.AppGreen
 import br.com.thiagoodev.investapp.core.extensions.toReal
 import br.com.thiagoodev.investapp.domain.models.Stock
 import coil.compose.AsyncImage
+import coil.decode.SvgDecoder
+import coil.request.ImageRequest
 import com.valentinilk.shimmer.shimmer
 
 @Composable
@@ -37,18 +40,16 @@ fun QuotationItem(stock: Stock) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Box(
+            AsyncImage(
                 modifier = Modifier
                     .size(50.dp)
-                    .background(MaterialTheme.colorScheme.primary, shape = CircleShape),
-                contentAlignment = Alignment.Center,
-            ) {
-                AsyncImage(
-                    modifier = Modifier.size(40.dp),
-                    model = stock.logo,
-                    contentDescription = null,
-                )
-            }
+                    .clip(RoundedCornerShape(100.dp)),
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(stock.logo)
+                    .decoderFactory(SvgDecoder.Factory())
+                    .build(),
+                contentDescription = null,
+            )
 
             Text(
                 modifier = Modifier
