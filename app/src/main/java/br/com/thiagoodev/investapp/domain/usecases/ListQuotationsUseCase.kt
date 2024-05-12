@@ -1,13 +1,15 @@
 package br.com.thiagoodev.investapp.domain.usecases
 
+import androidx.paging.PagingSource
+import br.com.thiagoodev.investapp.data.repositories.QuotationRepository
 import br.com.thiagoodev.investapp.domain.models.Quotation
-import br.com.thiagoodev.investapp.domain.repositories.QuotationRepository
 import retrofit2.Response
 import javax.inject.Inject
 
 class ListQuotationsUseCase @Inject constructor(private val repository: QuotationRepository) {
     suspend fun list(): Quotation {
-        val response: Response<Quotation> = repository.list()
+        val params: PagingSource.LoadParams<Int> = PagingSource.LoadParams<Int>()
+        val response: Response<Quotation> = repository.load()
 
         if(!response.isSuccessful) {
             throw Exception()

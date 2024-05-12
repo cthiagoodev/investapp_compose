@@ -2,7 +2,7 @@ package br.com.thiagoodev.investapp.domain.models
 
 import com.google.gson.annotations.SerializedName
 
-data class Quotation (
+data class Quotation(
     @SerializedName("indexes")
     val indexes: List<Index>,
     @SerializedName("stocks")

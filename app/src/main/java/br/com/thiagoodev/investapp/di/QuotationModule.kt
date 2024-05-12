@@ -1,6 +1,6 @@
 package br.com.thiagoodev.investapp.di
 
-import br.com.thiagoodev.investapp.domain.repositories.QuotationRepository
+import br.com.thiagoodev.investapp.data.services.QuotationService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,7 +11,7 @@ import retrofit2.Retrofit
 @InstallIn(ViewModelComponent::class)
 object QuotationModule {
     @Provides
-    fun provideQuotationRepository(retrofit: Retrofit): QuotationRepository {
-        return retrofit.create(QuotationRepository::class.java)
+    fun provideQuotationService(retrofit: Retrofit): QuotationService {
+        return retrofit.create(QuotationService::class.java)
     }
 }
