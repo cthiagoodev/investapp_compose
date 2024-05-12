@@ -1,4 +1,4 @@
-package br.com.thiagoodev.investapp.data.datasources
+package br.com.thiagoodev.investapp.data.pagination_sources
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
