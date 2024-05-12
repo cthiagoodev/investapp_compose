@@ -7,7 +7,7 @@ import br.com.thiagoodev.investapp.domain.repositories.QuotationRepository
 import retrofit2.Response
 import javax.inject.Inject
 
-class QuotationDataSource @Inject constructor(
+class QuotationPaginationSource @Inject constructor(
     private val repository: QuotationRepository) : PagingSource<Int, Quotation>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Quotation> {
         val nextPage = params.key ?: 1
