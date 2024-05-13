@@ -8,7 +8,7 @@ import javax.inject.Inject
 class ListQuotationsUseCaseImp @Inject constructor(
     private val repository: QuotationRepository,
     private val source: QuotationPagingSource,
-) : ListQuotationUseCase {
+) : ListQuotationsUseCase {
     override fun pagingSource(): QuotationPagingSource {
         return source
     }

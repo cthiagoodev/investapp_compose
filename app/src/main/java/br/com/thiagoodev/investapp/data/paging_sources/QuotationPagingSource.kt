@@ -17,6 +17,7 @@ class QuotationPagingSource @Inject constructor(
 
             if(response.totalPages != page) {
                 this.invalidate()
+                return LoadResult.Invalid()
             }
 
             return LoadResult.Page(
