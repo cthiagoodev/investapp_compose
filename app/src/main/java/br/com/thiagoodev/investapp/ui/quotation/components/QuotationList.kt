@@ -25,7 +25,7 @@ fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
         is LoadState.Loading -> Loading()
         is LoadState.NotLoading -> Success()
         else -> {
-            if (state.loadState.refresh is LoadState.NotLoading &&
+            if (state.loadState.append is LoadState.NotLoading &&
                 state.itemSnapshotList.isEmpty()) {
                 EmptyState("Não há nenhuma informação por enquanto")
             }
