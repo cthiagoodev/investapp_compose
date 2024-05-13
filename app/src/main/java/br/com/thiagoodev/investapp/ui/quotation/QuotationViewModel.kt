@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.thiagoodev.investapp.domain.models.Quotation
-import br.com.thiagoodev.investapp.domain.usecases.ListQuotationsUseCase
+import br.com.thiagoodev.investapp.domain.usecases.ListQuotationsUseCaseImp
 import br.com.thiagoodev.investapp.ui.quotation.state.QuotationState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class QuotationViewModel @Inject constructor(
-    private val listQuotationsUseCase: ListQuotationsUseCase,
+    private val listQuotationsUseCase: ListQuotationsUseCaseImp,
 ) : ViewModel() {
     private val _uiState: MutableLiveData<QuotationState> =
         MutableLiveData(QuotationState.Empty)

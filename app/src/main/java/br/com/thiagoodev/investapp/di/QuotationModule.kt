@@ -1,6 +1,9 @@
 package br.com.thiagoodev.investapp.di
 
 import br.com.thiagoodev.investapp.data.datasources.QuotationDataSource
+import br.com.thiagoodev.investapp.data.repositories.QuotationRepositoryImp
+import br.com.thiagoodev.investapp.domain.repositories.QuotationRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,9 +12,12 @@ import retrofit2.Retrofit
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object QuotationModule {
+abstract class QuotationModule {
     @Provides
     fun provideQuotationDataSource(retrofit: Retrofit): QuotationDataSource {
         return retrofit.create(QuotationDataSource::class.java)
     }
+
+    @Binds
+    abstract fun provideQuotationRepository(imp: QuotationRepositoryImp) : QuotationRepository
 }
