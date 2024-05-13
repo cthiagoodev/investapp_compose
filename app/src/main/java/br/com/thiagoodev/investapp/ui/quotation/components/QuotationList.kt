@@ -8,38 +8,34 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import br.com.thiagoodev.investapp.domain.models.Quotation
+import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import br.com.thiagoodev.investapp.domain.models.Stock
 import br.com.thiagoodev.investapp.ui.common.empty.EmptyState
-import br.com.thiagoodev.investapp.ui.common.empty.ErrorState
 import br.com.thiagoodev.investapp.ui.quotation.QuotationViewModel
-import br.com.thiagoodev.investapp.ui.quotation.state.QuotationState
 
 @Composable
 fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
-    val state: State<QuotationState?> = viewModel.uiState.observeAsState()
-
-    when(state.value) {
-        is QuotationState.Loading -> Loading()
-        is QuotationState.Success -> Success()
-        is QuotationState.Error -> ErrorState(
-            (state.value as QuotationState.Error).error.message ?: "")
-        is QuotationState.Empty -> EmptyState("Não há nenhuma informação por enquanto")
-        else -> EmptyState("Não há nenhuma informação por enquanto")
+    val state: LazyPagingItems<Stock> = viewModel.quotations.collectAsLazyPagingItems()
+    when(state.loadState.source.append) {
+        is LoadState.Loading -> Loading()
+        is LoadState.NotLoading -> Success()
+        else -> {
+            if (state.loadState.refresh is LoadState.NotLoading &&
+                state.itemSnapshotList.isEmpty()) {
+                EmptyState("Não há nenhuma informação por enquanto")
+            }
+        }
     }
 }
 
 @Composable
 private fun Success(viewModel: QuotationViewModel = hiltViewModel()) {
-    val state: State<QuotationState?> = viewModel.uiState.observeAsState()
-    val success: QuotationState.Success = state.value as QuotationState.Success
-    val quotation: Quotation = success.quotation
-    val stocks: List<Stock> = quotation.stocks
+    val state: LazyPagingItems<Stock> = viewModel.quotations.collectAsLazyPagingItems()
 
     Column {
         Text(
@@ -49,10 +45,10 @@ private fun Success(viewModel: QuotationViewModel = hiltViewModel()) {
         )
 
         LazyColumn {
-            items(stocks) {
+            items(state.itemSnapshotList) {
                 Box(
                     modifier = Modifier.padding(bottom = 10.dp)
-                ) { QuotationItem(it) }
+                ) { QuotationItem(it!!) }
             }
         }
     }

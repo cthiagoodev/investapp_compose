@@ -16,7 +16,7 @@ import javax.inject.Inject
 class QuotationViewModel @Inject constructor(
     private val listQuotationsUseCase: ListQuotationsUseCase,
 ) : ViewModel() {
-    val pager: Flow<PagingData<Stock>> = Pager(pagingConfig()) {
+    val quotations: Flow<PagingData<Stock>> = Pager(pagingConfig()) {
         listQuotationsUseCase.pagingSource() }.flow.cachedIn(viewModelScope)
 
     private fun pagingConfig(): PagingConfig {
