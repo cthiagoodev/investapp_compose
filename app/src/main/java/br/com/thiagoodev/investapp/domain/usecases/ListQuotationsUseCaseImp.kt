@@ -9,7 +9,9 @@ class ListQuotationsUseCaseImp @Inject constructor(
     private val repository: QuotationRepository,
     private val source: QuotationPagingSource,
 ) : ListQuotationUseCase {
-    val pagingSource: QuotationPagingSource get() = source
+    override fun pagingSource(): QuotationPagingSource {
+        return source
+    }
 
     override suspend fun list(page: Int): Quotation {
         return repository.list(page)
