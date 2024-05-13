@@ -1,5 +1,7 @@
 package br.com.thiagoodev.investapp.domain.repositories
 
-interface QuotationRepository {
+import br.com.thiagoodev.investapp.domain.models.Quotation
 
+interface QuotationRepository {
+    suspend fun list(page: Int): Quotation
 }
