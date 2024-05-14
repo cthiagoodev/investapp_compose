@@ -21,7 +21,8 @@ import br.com.thiagoodev.investapp.ui.quotation.QuotationViewModel
 @Composable
 fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
     val state: LazyPagingItems<Stock> = viewModel.quotations.collectAsLazyPagingItems()
-    when(state.loadState.source.append) {
+
+    when(state.loadState.source.refresh) {
         is LoadState.Loading -> Loading()
         is LoadState.NotLoading -> Success()
         else -> {

@@ -13,7 +13,11 @@ class QuotationRepositoryImp @Inject constructor(
         val response: Response<Quotation> = source.list(page)
 
         if(!response.isSuccessful || response.body() == null) {
-            throw NoDataException(response.message())
+            var message: String = response.message()
+            if(response.errorBody() != null) {
+
+            }
+            throw NoDataException(message)
         }
 
         return response.body()!!
