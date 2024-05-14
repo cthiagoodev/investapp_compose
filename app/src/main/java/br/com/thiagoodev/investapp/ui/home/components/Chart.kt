@@ -55,7 +55,8 @@ fun Chart(
         }
     }
 
-    val formatter = CartesianValueFormatter { x, chartValues, _ -> chartValues.model.extraStore[labelListKey][x.toInt()] }
+    val formatter = CartesianValueFormatter {
+        x, chartValues, _ -> chartValues.model.extraStore[labelListKey][x.toInt()] }
 
     Box(
         modifier = modifier,
@@ -63,7 +64,7 @@ fun Chart(
         CartesianChartHost(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(250.dp),
+                .height(200.dp),
             chart = rememberCartesianChart(
                 rememberLineCartesianLayer(),
                 startAxis = rememberStartAxis(

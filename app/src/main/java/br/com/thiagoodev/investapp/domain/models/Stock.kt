@@ -21,4 +21,6 @@ data class Stock (
     val sector: String,
     @SerializedName("type")
     val type: String
-)
+) {
+    companion object {}
+}

@@ -7,4 +7,6 @@ data class Index (
     val stock: String,
     @SerializedName("name")
     val name: String
-)
+) {
+    companion object {}
+}

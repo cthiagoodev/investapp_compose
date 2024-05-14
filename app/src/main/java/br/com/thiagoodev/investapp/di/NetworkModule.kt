@@ -16,16 +16,16 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit {
-        val retrofit: Retrofit.Builder = Retrofit.Builder()
-        retrofit.baseUrl("https://brapi.dev/api")
-        retrofit.addConverterFactory(GsonConverterFactory.create())
-        retrofit.client(buildClient())
-        return retrofit.build()
+        return Retrofit.Builder()
+            .baseUrl("https://brapi.dev")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(buildClient())
+            .build()
     }
 
     private fun buildClient(): OkHttpClient {
-        val client: OkHttpClient.Builder = OkHttpClient.Builder()
-        client.addNetworkInterceptor(TokenInterceptor())
-        return client.build()
+        return OkHttpClient.Builder()
+            .addNetworkInterceptor(TokenInterceptor())
+            .build()
     }
 }
