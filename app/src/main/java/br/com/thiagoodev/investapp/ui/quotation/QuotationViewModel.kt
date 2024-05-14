@@ -7,7 +7,7 @@ import br.com.thiagoodev.investapp.core.exceptions.AppException
 import br.com.thiagoodev.investapp.domain.models.Quotation
 import br.com.thiagoodev.investapp.domain.models.Stock
 import br.com.thiagoodev.investapp.domain.usecases.ListQuotationsUseCase
-import br.com.thiagoodev.investapp.ui.quotation.state.QuotationPaginationState
+import br.com.thiagoodev.investapp.ui.common.lists.state.PaginationState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -15,9 +15,9 @@ import javax.inject.Inject
 class QuotationViewModel @Inject constructor(
     private val listQuotationsUseCase: ListQuotationsUseCase,
 ) : ViewModel() {
-    private val _uiState: MutableLiveData<QuotationPaginationState> =
-        MutableLiveData(QuotationPaginationState.empty())
-    val uiState: LiveData<QuotationPaginationState> = _uiState
+    private val _uiState: MutableLiveData<PaginationState<Stock>> =
+        MutableLiveData(PaginationState.empty())
+    val uiState: LiveData<PaginationState<Stock>> = _uiState
 
     suspend fun fetch() {
         _uiState.value = _uiState.value?.copy(isLoading = true)

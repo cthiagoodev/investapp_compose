@@ -13,8 +13,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import br.com.thiagoodev.investapp.domain.models.Stock
 import br.com.thiagoodev.investapp.ui.common.lists.InfiniteScrollList
+import br.com.thiagoodev.investapp.ui.common.lists.state.PaginationState
 import br.com.thiagoodev.investapp.ui.quotation.QuotationViewModel
-import br.com.thiagoodev.investapp.ui.quotation.state.QuotationPaginationState
 
 @Composable
 fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
@@ -25,7 +25,7 @@ fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
             style = MaterialTheme.typography.titleSmall,
         )
 
-        val state: State<QuotationPaginationState?> = viewModel.uiState.observeAsState()
+        val state: State<PaginationState<Stock>?> = viewModel.uiState.observeAsState()
         val items: List<Stock> = viewModel.uiState.value!!.items
 
         InfiniteScrollList(

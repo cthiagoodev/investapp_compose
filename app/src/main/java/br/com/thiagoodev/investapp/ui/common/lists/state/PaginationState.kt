@@ -1,17 +1,15 @@
-package br.com.thiagoodev.investapp.ui.quotation.state
+package br.com.thiagoodev.investapp.ui.common.lists.state
 
-import br.com.thiagoodev.investapp.domain.models.Stock
-
-data class QuotationPaginationState(
-    val items: List<Stock> = emptyList(),
+data class PaginationState<T>(
+    val items: List<T> = emptyList(),
     val isLoading: Boolean = false,
     val error: Throwable? = null,
     val paginationKey: Int = 1,
     val endReached: Boolean = false,
 ) {
     companion object {
-        fun empty(): QuotationPaginationState {
-            return QuotationPaginationState(
+        fun <T> empty(): PaginationState<T> {
+            return PaginationState(
                 items = emptyList(),
                 isLoading = false,
                 error = null,
@@ -22,13 +20,13 @@ data class QuotationPaginationState(
     }
 
     fun copy(
-        items: List<Stock>? = null,
+        items: List<T>? = null,
         isLoading: Boolean? = null,
         error: Throwable? = null,
         paginationKey: Int? = null,
         endReached: Boolean? = null,
-    ): QuotationPaginationState {
-        return QuotationPaginationState(
+    ): PaginationState<T> {
+        return PaginationState(
             items = items ?: this.items,
             isLoading = isLoading ?: this.isLoading,
             error = error ?: this.error,
