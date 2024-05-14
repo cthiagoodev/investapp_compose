@@ -67,8 +67,6 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.runtime.livedata)
     implementation(libs.coil.compose)
-    implementation(libs.androidx.paging.runtime)
-    implementation(libs.androidx.paging.compose)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.dotenv.kotlin)
