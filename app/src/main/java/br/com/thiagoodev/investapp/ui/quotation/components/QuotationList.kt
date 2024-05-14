@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -20,9 +21,13 @@ import br.com.thiagoodev.investapp.ui.quotation.QuotationViewModel
 
 @Composable
 fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
-    val state: LazyPagingItems<Stock> = viewModel.quotations.collectAsLazyPagingItems()
+    LaunchedEffect(Unit) {
+        viewModel.initPagination()
+    }
 
-    when(state.loadState.source.refresh) {
+    val state: LazyPagingItems<Stock> = viewModel.uiState.collectAsLazyPagingItems()
+
+    when(state.loadState.source.append) {
         is LoadState.Loading -> Loading()
         is LoadState.NotLoading -> Success()
         else -> {
@@ -36,7 +41,7 @@ fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
 
 @Composable
 private fun Success(viewModel: QuotationViewModel = hiltViewModel()) {
-    val state: LazyPagingItems<Stock> = viewModel.quotations.collectAsLazyPagingItems()
+    val state: LazyPagingItems<Stock> = viewModel.uiState.collectAsLazyPagingItems()
 
     Column {
         Text(
