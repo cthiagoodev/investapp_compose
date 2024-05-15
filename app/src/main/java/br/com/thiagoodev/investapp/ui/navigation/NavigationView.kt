@@ -1,7 +1,7 @@
 package br.com.thiagoodev.investapp.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -10,13 +10,12 @@ import br.com.thiagoodev.investapp.ui.home.HomeView
 import br.com.thiagoodev.investapp.ui.quotation_detail.QuotationDetailView
 
 @Composable
-fun NavigationView(viewModel: NavigationViewModel = hiltViewModel()) {
-    rememberNavController()
+fun NavigationView(controller: NavHostController = rememberNavController()) {
     NavHost(
-        navController = viewModel.controller,
+        navController = controller,
         startDestination = Routes.home,
     ) {
-        composable(Routes.home) { HomeView() }
+        composable(Routes.home) { HomeView(controller) }
         composable(Routes.quotationDetail) { QuotationDetailView() }
     }
 }

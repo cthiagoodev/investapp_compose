@@ -24,23 +24,22 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import br.com.thiagoodev.investapp.config.Routes
 import br.com.thiagoodev.investapp.core.extensions.AppGreen
 import br.com.thiagoodev.investapp.core.extensions.toReal
 import br.com.thiagoodev.investapp.domain.models.Stock
-import br.com.thiagoodev.investapp.ui.navigation.NavigationViewModel
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.valentinilk.shimmer.shimmer
 
 @Composable
-fun QuotationItem(stock: Stock, navigationViewModel: NavigationViewModel = hiltViewModel()) {
+fun QuotationItem(stock: Stock, navigator: NavHostController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { navigationViewModel.navigate(Routes.quotationDetail) },
+            .clickable { navigator.navigate(Routes.quotationDetail) },
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Row(

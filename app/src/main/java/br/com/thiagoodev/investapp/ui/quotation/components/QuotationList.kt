@@ -11,13 +11,14 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import br.com.thiagoodev.investapp.domain.models.Stock
 import br.com.thiagoodev.investapp.ui.common.lists.InfiniteScrollList
 import br.com.thiagoodev.investapp.ui.common.lists.state.PaginationState
 import br.com.thiagoodev.investapp.ui.quotation.QuotationViewModel
 
 @Composable
-fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
+fun QuotationList(navigator: NavHostController, viewModel: QuotationViewModel = hiltViewModel()) {
     Column {
         Text(
             modifier = Modifier.padding(bottom = 20.dp),
@@ -44,7 +45,7 @@ fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
         ) {
             Box(
                 modifier = Modifier.padding(bottom = 10.dp)
-            ) { QuotationItem(it) }
+            ) { QuotationItem(it, navigator) }
         }
     }
 }

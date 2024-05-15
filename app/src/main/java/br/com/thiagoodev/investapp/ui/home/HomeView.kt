@@ -12,6 +12,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import br.com.thiagoodev.investapp.ui.home.components.AppBar
 import br.com.thiagoodev.investapp.ui.home.components.Capital
 import br.com.thiagoodev.investapp.ui.home.components.Chart
@@ -19,7 +20,7 @@ import br.com.thiagoodev.investapp.ui.quotation.components.QuotationList
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeView() {
+fun HomeView(navigator: NavHostController) {
     Surface(
         color = MaterialTheme.colorScheme.background
     ) {
@@ -45,7 +46,7 @@ fun HomeView() {
                 Box(
                     modifier = Modifier.padding(20.dp)
                 ) {
-                    QuotationList()
+                    QuotationList(navigator)
                 }
             }
         }
