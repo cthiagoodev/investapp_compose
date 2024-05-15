@@ -42,7 +42,7 @@ class QuotationViewModel @Inject constructor(
         } catch(error: Exception) {
             _uiState.value = _uiState.value?.copy(
                 isLoading = false,
-                error = Exception("Ocorreu um erro ao buscar items"),
+                error = Exception(error.message),
             )
         }
     }

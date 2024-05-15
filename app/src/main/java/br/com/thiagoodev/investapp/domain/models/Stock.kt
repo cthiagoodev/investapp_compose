@@ -12,7 +12,7 @@ data class Stock (
     @SerializedName("change")
     val change: Double,
     @SerializedName("volume")
-    val volume: Long,
+    val volume: Double,
     @SerializedName("market_cap")
     val marketCap: Double,
     @SerializedName("logo")

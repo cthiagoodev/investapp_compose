@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import br.com.thiagoodev.investapp.config.Routes
 import br.com.thiagoodev.investapp.core.extensions.AppGreen
@@ -63,6 +64,7 @@ fun QuotationItem(stock: Stock, navigationViewModel: NavigationViewModel = hiltV
                     text = stock.name,
                     style = MaterialTheme.typography.bodySmall.copy(
                         fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
                     ),
                 )
 
@@ -70,7 +72,9 @@ fun QuotationItem(stock: Stock, navigationViewModel: NavigationViewModel = hiltV
                     modifier = Modifier
                         .padding(start = 10.dp),
                     text = stock.stock,
-                    style = MaterialTheme.typography.bodySmall,
+                    style = MaterialTheme.typography.bodySmall.copy(
+                        fontSize = 10.sp,
+                    ),
                 )
             }
         }
@@ -89,7 +93,8 @@ fun QuotationItem(stock: Stock, navigationViewModel: NavigationViewModel = hiltV
             Text(
                 text = stock.change.toReal(),
                 style = MaterialTheme.typography.bodySmall.copy(
-                    color = if(stock.change < 0) Color.Red else Color.AppGreen
+                    color = if(stock.change < 0) Color.Red else Color.AppGreen,
+                    fontSize = 12.sp,
                 ),
             )
         }
