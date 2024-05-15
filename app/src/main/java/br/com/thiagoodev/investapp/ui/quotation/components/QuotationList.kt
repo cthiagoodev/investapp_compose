@@ -20,7 +20,7 @@ import br.com.thiagoodev.investapp.ui.quotation.QuotationViewModel
 fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
     Column {
         Text(
-            modifier = Modifier.padding(bottom = 10.dp),
+            modifier = Modifier.padding(bottom = 20.dp),
             text = "Cotações disponiveis",
             style = MaterialTheme.typography.titleSmall,
         )

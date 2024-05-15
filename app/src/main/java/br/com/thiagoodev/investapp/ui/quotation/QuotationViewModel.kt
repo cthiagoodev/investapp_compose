@@ -13,8 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class QuotationViewModel @Inject constructor(
-    private val listQuotationsUseCase: ListQuotationsUseCase,
-) : ViewModel() {
+    private val listQuotationsUseCase: ListQuotationsUseCase) : ViewModel() {
     private val _uiState: MutableLiveData<PaginationState<Stock>> =
         MutableLiveData(PaginationState.empty())
     val uiState: LiveData<PaginationState<Stock>> = _uiState
