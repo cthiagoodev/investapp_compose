@@ -33,13 +33,7 @@ fun QuotationList(viewModel: QuotationViewModel = hiltViewModel()) {
             loadMore = viewModel::fetch,
             isLoading = state.value?.isLoading ?: false,
             endReached = state.value?.endReached ?: false,
-            error = {
-                Text(
-                    modifier = Modifier.padding(bottom = 10.dp),
-                    text = state.value!!.error!!.message ?: "Ocorreu um erro",
-                    style = MaterialTheme.typography.bodySmall,
-                )
-            },
+            error = state.value?.error?.message,
             loading = {
                 Box(
                     modifier = Modifier.padding(bottom = 10.dp)
