@@ -26,7 +26,7 @@ class QuotationViewModel @Inject constructor(
             val paginationKey: Int = _uiState.value?.paginationKey ?: 0
             val quotation: Quotation = listQuotationsUseCase.list(paginationKey)
             val cachedItems: List<Stock> = _uiState.value?.items ?: emptyList()
-            val endReached: Boolean = quotation.hasNextPage
+            val endReached: Boolean = !quotation.hasNextPage
 
             _uiState.value = _uiState.value?.copy(
                 items = cachedItems + quotation.stocks,

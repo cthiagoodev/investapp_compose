@@ -7,19 +7,19 @@ data class Quotation(
     val indexes: List<Index>,
     @SerializedName("stocks")
     val stocks: List<Stock>,
-    @SerializedName("available_sectors")
+    @SerializedName("availableSectors")
     val availableSectors: List<String>,
-    @SerializedName("available_stock_types")
+    @SerializedName("availableStockTypes")
     val availableStockTypes: List<String>,
-    @SerializedName("current_page")
+    @SerializedName("currentPage")
     val currentPage: Int,
-    @SerializedName("total_pages")
+    @SerializedName("totalPages")
     val totalPages: Int,
-    @SerializedName("total_per_page")
+    @SerializedName("totalPerPage")
     val itemsPerPage: Int,
-    @SerializedName("total_count")
+    @SerializedName("totalCount")
     val totalCount: Int,
-    @SerializedName("has_next_page")
+    @SerializedName("hasNextPage")
     val hasNextPage: Boolean
 ) {
     companion object {}
