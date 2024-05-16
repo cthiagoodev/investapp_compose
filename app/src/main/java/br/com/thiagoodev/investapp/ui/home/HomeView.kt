@@ -18,7 +18,6 @@ import br.com.thiagoodev.investapp.ui.home.components.Capital
 import br.com.thiagoodev.investapp.ui.home.components.Chart
 import br.com.thiagoodev.investapp.ui.quotation.components.QuotationList
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeView(navigator: NavHostController) {
     Surface(
@@ -30,7 +29,7 @@ fun HomeView(navigator: NavHostController) {
             topBar = { AppBar() },
         ) {
             Column(
-                modifier = Modifier.padding(top = 90.dp),
+                modifier = Modifier.padding(top = it.calculateTopPadding()),
             ) {
                 Capital(
                     modifier = Modifier
