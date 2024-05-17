@@ -25,14 +25,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import br.com.thiagoodev.investapp.config.Routes
 import br.com.thiagoodev.investapp.core.extensions.AppGreen
+import br.com.thiagoodev.investapp.core.extensions.toQuotationDetail
 import br.com.thiagoodev.investapp.core.extensions.toReal
 import br.com.thiagoodev.investapp.domain.models.Stock
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
-import com.google.gson.Gson
 import com.valentinilk.shimmer.shimmer
 
 @Composable
@@ -40,10 +39,7 @@ fun QuotationItem(stock: Stock, navigator: NavHostController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable {
-                val json: String = Gson().toJson(stock)
-                navigator.navigate(Routes.quotationDetail + "/$json")
-           },
+            .clickable { navigator.toQuotationDetail(stock) },
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Row(

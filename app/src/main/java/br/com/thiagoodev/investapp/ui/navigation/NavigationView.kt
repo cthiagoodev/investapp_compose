@@ -9,7 +9,6 @@ import br.com.thiagoodev.investapp.config.Routes
 import br.com.thiagoodev.investapp.domain.models.Stock
 import br.com.thiagoodev.investapp.ui.home.HomeView
 import br.com.thiagoodev.investapp.ui.quotation_detail.QuotationDetailView
-import com.google.gson.Gson
 
 @Composable
 fun NavigationView(controller: NavHostController = rememberNavController()) {
@@ -19,8 +18,8 @@ fun NavigationView(controller: NavHostController = rememberNavController()) {
     ) {
         composable(Routes.home) { HomeView(controller) }
         composable(Routes.quotationDetail) {
-            val json: String = it.arguments?.getString("json") ?: ""
-            val stock: Stock = Gson().fromJson(json, Stock::class.java)
+            val stock: Stock =
+                controller.currentBackStackEntry?.savedStateHandle?.get<Stock>("stock") ?: return@composable
             QuotationDetailView(controller, stock)
         }
     }
