@@ -16,6 +16,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -59,14 +60,18 @@ fun QuotationDetailView(navigator: NavHostController, stock: Stock) {
                 ) {
                     Column(
                         modifier = Modifier
+                            .fillMaxSize()
                             .padding(horizontal = 10.dp)
                             .padding(
                                 top = it.calculateTopPadding(),
                                 bottom = 10.dp
                             ),
+                        horizontalAlignment = Alignment.End,
                     ) {
                         Row(
+                            modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically,
                         ) {
                             Column {
                                 Text(
@@ -95,6 +100,28 @@ fun QuotationDetailView(navigator: NavHostController, stock: Stock) {
                                 contentDescription = null,
                             )
 
+                        }
+
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 10.dp)
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                modifier = Modifier.padding(end = 10.dp),
+                                text = stock.type,
+                                style = MaterialTheme.typography.bodySmall.copy(
+                                    color = Color.White,
+                                ),
+                            )
+
+                            Text(
+                                text = stock.sector,
+                                style = MaterialTheme.typography.bodySmall.copy(
+                                    color = Color.White,
+                                ),
+                            )
                         }
                     }
                 }

@@ -11,7 +11,6 @@ fun NavHostController.toQuotationDetail(stock: Stock) {
         ?.apply {
             set("stock", json)
         }
-        ?.also {
-            navigate(Routes.quotationDetail)
-        }
+
+    navigate(Routes.quotationDetail)
 }
