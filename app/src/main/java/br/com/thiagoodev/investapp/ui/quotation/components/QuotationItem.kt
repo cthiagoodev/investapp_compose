@@ -32,6 +32,7 @@ import br.com.thiagoodev.investapp.domain.models.Stock
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.google.gson.Gson
 import com.valentinilk.shimmer.shimmer
 
 @Composable
@@ -39,7 +40,10 @@ fun QuotationItem(stock: Stock, navigator: NavHostController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { navigator.navigate(Routes.quotationDetail) },
+            .clickable {
+                val json: String = Gson().toJson(stock)
+                navigator.navigate(Routes.quotationDetail + "/$json")
+           },
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Row(

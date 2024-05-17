@@ -79,15 +79,16 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-compiler:2.51.1")
-    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
-    implementation("com.google.firebase:firebase-auth")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
     implementation(libs.vico.compose)
     implementation(libs.vico.compose.m2)
     implementation(libs.vico.compose.m3)
     implementation(libs.vico.core)
     implementation(libs.vico.views)
+    implementation(libs.fontawesomecompose)
 }
 
 kapt {
