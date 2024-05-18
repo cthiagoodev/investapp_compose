@@ -23,4 +23,9 @@ data class Stock (
     val type: String
 ) {
     companion object {}
+
+//    fun getPercentChange(): Double {
+//
+//    }
+
 }

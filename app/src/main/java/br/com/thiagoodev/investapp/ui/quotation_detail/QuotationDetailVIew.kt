@@ -34,6 +34,7 @@ fun QuotationDetailView(navigator: NavHostController, stock: Stock) {
                         .fillMaxSize(),
                 ) {
 
+
                 }
             }
         }

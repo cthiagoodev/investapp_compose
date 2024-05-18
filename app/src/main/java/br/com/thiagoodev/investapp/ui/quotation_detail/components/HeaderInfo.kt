@@ -98,14 +98,16 @@ fun HeaderInfo(stock: Stock, padding: PaddingValues) {
             ) {
                 Text(
                     modifier = Modifier.padding(end = 10.dp),
-                    text = stock.type.capitalize(Locale.ROOT),
+                    text = stock.type.replaceFirstChar {
+                        if(it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
                     style = MaterialTheme.typography.bodySmall.copy(
                         color = Color.White,
                     ),
                 )
 
                 Text(
-                    text = stock.sector.capitalize(Locale.ROOT),
+                    text = stock.sector.replaceFirstChar {
+                        if(it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
                     style = MaterialTheme.typography.bodySmall.copy(
                         color = Color.White,
                     ),
@@ -116,7 +118,7 @@ fun HeaderInfo(stock: Stock, padding: PaddingValues) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 50.dp, bottom = 10.dp),
+                    .padding(vertical = 20.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
             ) {
