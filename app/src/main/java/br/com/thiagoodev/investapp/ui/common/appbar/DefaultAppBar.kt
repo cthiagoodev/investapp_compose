@@ -19,7 +19,7 @@ import com.guru.fontawesomecomposelib.FaIcons
 @Composable
 fun DefaultAppBar(navigator: NavHostController) {
     TopAppBar(
-        modifier = Modifier.padding(10.dp),
+        modifier = Modifier.padding(20.dp),
         title = { },
         colors = TopAppBarColors(
             containerColor = Color.Transparent,

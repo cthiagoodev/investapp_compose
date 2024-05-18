@@ -49,7 +49,7 @@ fun HeaderInfo(stock: Stock, padding: PaddingValues) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(horizontal = 10.dp)
+                .padding(horizontal = 20.dp)
                 .padding(
                     top = padding.calculateTopPadding(),
                     bottom = 10.dp
@@ -131,9 +131,9 @@ fun HeaderInfo(stock: Stock, padding: PaddingValues) {
                 )
 
                 Text(
-                    text = "81%",
+                    text = "${stock.percentChange()}%",
                     style = MaterialTheme.typography.titleLarge.copy(
-                        color = Color.AppGreen,
+                        color = if(stock.percentChange() >= 0) Color.AppGreen else Color.Red,
                     ),
                 )
             }
