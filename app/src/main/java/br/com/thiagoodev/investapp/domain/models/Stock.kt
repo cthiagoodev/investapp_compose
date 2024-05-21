@@ -1,6 +1,7 @@
 package br.com.thiagoodev.investapp.domain.models
 
 import com.google.gson.annotations.SerializedName
+import kotlin.math.roundToInt
 
 data class Stock (
     @SerializedName("stock")
@@ -12,7 +13,7 @@ data class Stock (
     @SerializedName("change")
     val change: Double,
     @SerializedName("volume")
-    val volume: Long,
+    val volume: Double,
     @SerializedName("market_cap")
     val marketCap: Double,
     @SerializedName("logo")
@@ -23,4 +24,9 @@ data class Stock (
     val type: String
 ) {
     companion object {}
+
+    fun percentChange(): Double {
+        val percent: Double = (change / close - change) * 100
+        return (percent * 100).roundToInt().toDouble() / 100
+    }
 }

@@ -1,6 +1,7 @@
 package br.com.thiagoodev.investapp.ui.quotation.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,7 +23,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.com.thiagoodev.investapp.core.extensions.AppGreen
+import br.com.thiagoodev.investapp.core.extensions.toQuotationDetail
 import br.com.thiagoodev.investapp.core.extensions.toReal
 import br.com.thiagoodev.investapp.domain.models.Stock
 import coil.compose.AsyncImage
@@ -31,10 +35,11 @@ import coil.request.ImageRequest
 import com.valentinilk.shimmer.shimmer
 
 @Composable
-fun QuotationItem(stock: Stock) {
+fun QuotationItem(stock: Stock, navigator: NavHostController) {
     Row(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable { navigator.toQuotationDetail(stock) },
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Row(
@@ -51,14 +56,26 @@ fun QuotationItem(stock: Stock) {
                 contentDescription = null,
             )
 
-            Text(
-                modifier = Modifier
-                    .padding(start = 10.dp),
-                text = stock.name,
-                style = MaterialTheme.typography.bodySmall.copy(
-                    fontWeight = FontWeight.Bold,
-                ),
-            )
+            Column {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp),
+                    text = stock.name,
+                    style = MaterialTheme.typography.bodySmall.copy(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 12.sp,
+                    ),
+                )
+
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp),
+                    text = stock.stock,
+                    style = MaterialTheme.typography.bodySmall.copy(
+                        fontSize = 10.sp,
+                    ),
+                )
+            }
         }
 
         Column(
@@ -75,7 +92,8 @@ fun QuotationItem(stock: Stock) {
             Text(
                 text = stock.change.toReal(),
                 style = MaterialTheme.typography.bodySmall.copy(
-                    color = if(stock.change < 0) Color.Red else Color.AppGreen
+                    color = if(stock.change < 0) Color.Red else Color.AppGreen,
+                    fontSize = 12.sp,
                 ),
             )
         }

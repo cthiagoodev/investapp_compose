@@ -33,6 +33,8 @@ fun Chart(
     val modelProducer = remember { CartesianChartModelProducer.build() }
     val labelListKey = ExtraStore.Key<List<String>>()
 
+
+
     LaunchedEffect(Unit) {
         val bottomData: Map<String, Float> = mapOf(
             "1D" to 1f,

@@ -6,5 +6,6 @@ class Routes {
         const val login: String = "login"
         const val register: String = "register"
         const val home: String = "home"
+        const val quotationDetail: String = "quotation-detail"
     }
 }
